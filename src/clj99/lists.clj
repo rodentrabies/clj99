@@ -146,3 +146,33 @@
         (recur c (rest l) res (inc n))
         (recur (first l) (rest l) (cons (if (= n 1) c (list n c)) res) 1))
       (reverse (cons (if (= n 1) c (list n c)) res)))))
+
+(defn decode-rl
+  "P12 (**) Decode a run-length encoded list.
+   Given a run-length code list generated as specified in problem P11.
+   Construct its uncompressed version."
+  [encoded-lst]
+  (->> encoded-lst
+       (map #(if (seq? %) (repeat (first %) (second %)) (list %)))
+       (reduce concat)))
+
+(defn encode-direct
+  "P13 (**) Run-length encoding of a list (direct solution).
+   Implement the so-called run-length encoding data compression method directly.
+   I.e. don't explicitly create the sublists containing the duplicates, as in
+   problem P09, but only count them. As in problem P11, simplify the result list
+   by replacing the singleton lists (1 X) by X.
+   Example:
+     * (encode-direct '(a a a a b c c a a d e e e e))
+     ((4 A) B (2 C) (2 A) D (4 E))
+   ALREADY DONE IN ENCODE-MODIFIED"
+  [lst]
+  (encode-modified lst))
+
+(defn dupli
+  "P14 (*) Duplicate the elements of a list.
+   Example:
+     * (dupli '(a b c c d))
+     (A A B B C C C C D D)"
+  [lst]
+  (transduce (map #(list % %)) concat lst))

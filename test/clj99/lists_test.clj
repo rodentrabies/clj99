@@ -51,3 +51,19 @@
   (testing "P11"
     (is (= (clj99.lists/encode-modified '(a a a a b c c a a d e e e e))
            '((4 a) b (2 c) (2 a) d (4 e))))))
+
+(deftest p12
+  (testing "P12"
+    (is (= (clj99.lists/decode-rl '((4 a) b (2 c) (2 a) d (4 e)))
+           '(a a a a b c c a a d e e e e)))))
+
+(deftest p13
+  (testing "P13"
+    (is (= (clj99.lists/encode-direct '(a a a a b c c a a d e e e e))
+           '((4 a) b (2 c) (2 a) d (4 e))))))
+
+(deftest p14
+  (testing "P14"
+    (is (= (clj99.lists/dupli '(a b c c d))
+           '(a a b b c c c c d d)))))
+
