@@ -6,8 +6,7 @@
   "P01 (*) Find the last box of a list.
    Example:
      * (my-last '(a b c d))
-     (D)
-  "
+     (D)"
   [sq]
   (let [nx (next sq)]
     (if nx
@@ -19,8 +18,7 @@
   "P02 (*) Find the last but one box of a list.
    Example:
      * (my-but-last '(a b c d))
-     (C D)
-  "
+     (C D)"
   [sq]
   (if (nnext sq)
     (recur (rest sq))
@@ -32,8 +30,7 @@
    The first element in the list is number 1.
    Example:
      * (element-at '(a b c d e) 3)
-     C
-  "
+     C"
   [sq k]
   (loop [s sq, n 1]
     (if (= n k)
@@ -73,8 +70,7 @@
    Hint: Use the predefined functions list and append.
    Example:
      * (my-flatten '(a (b (c d) e)))
-     (A B C D E)
-  "
+     (A B C D E)"
   [tree]
   (letfn [(mloop% [t res]
             (if (seq t)
@@ -91,8 +87,7 @@
    copy of the element. The order of the elements should not be changed.
    Example:
      * (compress '(a a a a b c c a a d e e e e))
-     (A B C A D E)
-  "
+     (A B C A D E)"
   [lst]
   (loop [c (first lst), l lst, res (and c (list c))]
     (if (seq l)
@@ -100,3 +95,54 @@
         (recur c (rest l) res)
         (recur (first l) (rest l) (cons (first l) res)))
       (reverse res))))
+
+
+(defn pack
+  "P09 (**) Pack consecutive duplicates of list elements into sublists.
+   If a list contains repeated elements they should be placed in
+   separate sublists.
+   Example:
+     * (pack '(a a a a b c c a a d e e e e))
+     ((A A A A) (B) (C C) (A A) (D) (E E E E))"
+  [lst]
+  (loop [c (first lst), l lst, res nil, sub nil]
+    (if (seq l)
+      (if (= (first l) c)
+        (recur c (rest l) res (cons c sub))
+        (recur (first l) (rest l) (cons sub res) (list (first l))))
+      (reverse (cons sub res)))))
+
+
+(defn encode
+  "P10 (*) Run-length encoding of a list.
+   Use the result of problem P09 to implement the so-called run-length
+   encoding data compression method. Consecutive duplicates of elements
+   are encoded as lists (N E) where N is the number of duplicates
+   of the element E.
+   Example:
+     * (encode '(a a a a b c c a a d e e e e))
+     ((4 A) (1 B) (2 C) (2 A) (1 D)(4 E))"
+  [lst]
+  (loop [c (first lst), l lst, res nil, n 0]
+    (if (seq l)
+      (if (= (first l) c)
+        (recur c (rest l) res (inc n))
+        (recur (first l) (rest l) (cons (list n c) res) 1))
+      (reverse (cons (list n c) res)))))
+
+
+(defn encode-modified
+  "P11 (*) Modified run-length encoding.
+   Modify the result of problem P10 in such a way that if an element
+   has no duplicates it is simply copied into the result list. Only
+   elements with duplicates are transferred as (N E) lists.
+   Example:
+     * (encode-modified '(a a a a b c c a a d e e e e))
+     ((4 A) B (2 C) (2 A) D (4 E))"
+  [lst]
+  (loop [c (first lst), l lst, res nil, n 0]
+    (if (seq l)
+      (if (= c (first l))
+        (recur c (rest l) res (inc n))
+        (recur (first l) (rest l) (cons (if (= n 1) c (list n c)) res) 1))
+      (reverse (cons (if (= n 1) c (list n c)) res)))))
