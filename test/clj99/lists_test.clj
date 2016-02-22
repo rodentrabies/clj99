@@ -67,3 +67,22 @@
     (is (= (clj99.lists/dupli '(a b c c d))
            '(a a b b c c c c d d)))))
 
+(deftest p15
+  (testing "P15"
+    (is (= (clj99.lists/repli '(a b c) 3)
+           '(a a a b b b c c c)))))
+
+(deftest p16
+  (testing "P16"
+    (is (= (clj99.lists/mdrop '(a b c d e f g h i k) 3)
+           '(a b d e g h k)))))
+
+(deftest p17
+  (testing "P17"
+    (is (= (clj99.lists/msplit '(a b c d e f g h i k) 3)
+           '((a b c) (d e f g h i k))))))
+
+(deftest p18
+  (testing "P18"
+    (is (= (clj99.lists/slice '(a b c d e f g h i k) 3 7)
+           '(c d e f g)))))

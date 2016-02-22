@@ -176,3 +176,53 @@
      (A A B B C C C C D D)"
   [lst]
   (transduce (map #(list % %)) concat lst))
+
+(defn repli
+  "P15 (**) Replicate the elements of a list a given number of times.
+   Example:
+     * (repli '(a b c) 3)
+     (A A A B B B C C C)"
+  [lst n]
+  (reduce concat (map #(repeat n %) lst)))
+
+(defn mdrop 
+  "P16 (**) Drop every N'th element from a list.
+   Example:
+     * (drop '(a b c d e f g h i k) 3)
+     (A B D E G H K)"
+  [lst n]
+  (loop [l lst, c 1, res nil]
+    (if (seq l)
+      (if (= c n)
+        (recur (rest l) 1 res)
+        (recur (rest l) (inc c) (cons (first l) res)))
+      (reverse res))))
+
+(defn msplit
+  "P17 (*) Split a list into two parts; the length of the first part is given.
+   Do not use any predefined predicates.
+   Example:
+     * (split '(a b c d e f g h i k) 3)
+     ((A B C) (D E F G H I K))"
+  [lst n]
+  (loop [l lst, c 0, part nil]
+    (if (seq l)
+      (if (= c n)
+        (list (reverse part) l)
+        (recur (rest l) (inc c) (cons (first l) part)))
+      (list (reverse part) nil))))
+
+(defn slice
+  "P18 (**) Extract a slice from a list.
+   Given two indices, I and K, the slice is the list containing the
+   elements between the I'th and K'th element of the original list
+   (both limits included). Start counting the elements with 1.
+   Example:
+     * (slice '(a b c d e f g h i k) 3 7)
+     (C D E F G)"
+  [lst s e]
+  (loop [l lst, c 1, res nil]
+    (cond (or (> c e) (not (seq l))) (reverse res)
+          (and (>= c s) (<= c e)) (recur (rest l) (inc c) (cons (first l) res))
+          :else (recur (rest l) (inc c) nil))))
+
