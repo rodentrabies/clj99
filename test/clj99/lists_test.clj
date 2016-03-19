@@ -86,3 +86,30 @@
   (testing "P18"
     (is (= (clj99.lists/slice '(a b c d e f g h i k) 3 7)
            '(c d e f g)))))
+
+(deftest p19
+  (testing "P19"
+    (is (= (clj99.lists/rotate '(a b c d e f g h) 3)
+           '(d e f g h a b c)))
+    (is (= (clj99.lists/rotate '(a b c d e f g h) -2)
+           '(g h a b c d e f)))))
+
+(deftest p20
+  (testing "P20"
+    (is (= (clj99.lists/remove-at '(a b c d) 2) '(a c d)))))
+
+(deftest p21
+  (testing "P21"
+    (is (= (clj99.lists/insert-at 'alfa '(a b c d) 2) '(a alfa b c d)))))
+
+(deftest p22
+  (testing "P22"
+    (is (= (clj99.lists/mrange 4 9) '(4 5 6 7 8 9)))
+    (is (= (clj99.lists/mrange 9 4) '(9 8 7 6 5 4)))))
+
+(deftest p23
+  (let [testval '(a b c d e f g h)]
+   (testing "P23"
+     (dotimes [n 10]
+       (let [k (rand-int (count testval)), v (clj99.lists/rnd-select testval k)]
+        (is (and (= (count v) k)) (every? (into #{} testval) v)))))))

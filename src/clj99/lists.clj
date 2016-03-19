@@ -147,6 +147,7 @@
         (recur (first l) (rest l) (cons (if (= n 1) c (list n c)) res) 1))
       (reverse (cons (if (= n 1) c (list n c)) res)))))
 
+
 (defn decode-rl
   "P12 (**) Decode a run-length encoded list.
    Given a run-length code list generated as specified in problem P11.
@@ -155,6 +156,7 @@
   (->> encoded-lst
        (map #(if (seq? %) (repeat (first %) (second %)) (list %)))
        (reduce concat)))
+
 
 (defn encode-direct
   "P13 (**) Run-length encoding of a list (direct solution).
@@ -169,6 +171,7 @@
   [lst]
   (encode-modified lst))
 
+
 (defn dupli
   "P14 (*) Duplicate the elements of a list.
    Example:
@@ -177,6 +180,7 @@
   [lst]
   (transduce (map #(list % %)) concat lst))
 
+
 (defn repli
   "P15 (**) Replicate the elements of a list a given number of times.
    Example:
@@ -184,6 +188,7 @@
      (A A A B B B C C C)"
   [lst n]
   (reduce concat (map #(repeat n %) lst)))
+
 
 (defn mdrop 
   "P16 (**) Drop every N'th element from a list.
@@ -197,6 +202,7 @@
         (recur (rest l) 1 res)
         (recur (rest l) (inc c) (cons (first l) res)))
       (reverse res))))
+
 
 (defn msplit
   "P17 (*) Split a list into two parts; the length of the first part is given.
@@ -212,6 +218,7 @@
         (recur (rest l) (inc c) (cons (first l) part)))
       (list (reverse part) nil))))
 
+
 (defn slice
   "P18 (**) Extract a slice from a list.
    Given two indices, I and K, the slice is the list containing the
@@ -226,3 +233,61 @@
           (and (>= c s) (<= c e)) (recur (rest l) (inc c) (cons (first l) res))
           :else (recur (rest l) (inc c) nil))))
 
+
+(defn rotate
+  "P19 (**) Rotate a list N places to the left.
+   Examples:
+     * (rotate '(a b c d e f g h) 3)
+     (D E F G H A B C)
+     * (rotate '(a b c d e f g h) -2)
+     (G H A B C D E F)
+   Hint: Use the predefined functions length and append, as well as
+         the result of problem P17."
+  [lst n]
+  (let [[pref postf] (split-at (mod n (count lst)) lst)]
+    (concat postf pref)))
+
+
+(defn remove-at 
+  "P20 (*) Remove the K'th element from a list.
+   Example:
+     * (remove-at '(a b c d) 2)
+     (A C D)"
+  [lst k]
+  (cond (not (seq lst)) nil
+        (= k 1) (rest lst)
+        :else (cons (first lst) (remove-at (rest lst) (dec k)))))
+
+
+(defn insert-at 
+  "P21 (*) Insert an element at a given position into a list.
+   Example:
+     * (insert-at 'alfa '(a b c d) 2)
+     (A ALFA B C D)"
+  [elem lst k]
+  (cond (not (seq lst)) nil
+        (= k 1) (cons elem lst)
+        :else (cons (first lst) (insert-at elem (rest lst) (dec k)))))
+
+
+(defn mrange
+  "P22 (*) Create a list containing all integers within a given range.
+   If first argument is smaller than second, produce a list in decreasing order.
+   Example:
+     * (range 4 9)
+     (4 5 6 7 8 9)"
+  [a b]
+  (take (inc (Math/abs (- a b))) (iterate (if (< a b) inc dec) a)))
+
+
+(defn rnd-select
+  "P23 (**) Extract a given number of randomly selected elements from a list.
+   The selected items shall be returned in a list.
+   Example:
+     * (rnd-select '(a b c d e f g h) 3)
+     (E D A)
+   Hint: Use the built-in random number generator and the result
+         of problem P20."
+  [lst k]
+  (loop [l lst, n (- (count lst) k)]
+    (if (= n 0) l (recur (remove-at l (inc (rand-int (count l)))) (dec n)))))
