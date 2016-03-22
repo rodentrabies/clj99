@@ -5,113 +5,103 @@ See original problems [here](http://www.ic.unicamp.br/~meidanis/courses/mc336/20
 
 List of completed problems:
 - Lists (25/28):
-  - P01 done
-  - P02 done
-  - P03 done
-  - P04 done
-  - P05 done
-  - P06 done
-  - P07 done
-  - P08 done
-  - P09 done
-  - P10 done
-  - P11 done
-  - P12 done 
-  - P13 done 
-  - P14 done
-  - P15 done
-  - P16 done
-  - P17 done 
-  - P18 done
-  - P19 done
-  - P20 done
-  - P21 done
-  - P22 done
-  - P23 done
-  - P24 done
-  - P25 done
-  - P26
-  - P27
-  - P28
+  - [x] P01
+  - [x] P02
+  - [x] P03
+  - [x] P04
+  - [x] P05
+  - [x] P06
+  - [x] P07
+  - [x] P08
+  - [x] P09
+  - [x] P10
+  - [x] P11
+  - [x] P12
+  - [x] P13
+  - [x] P14
+  - [x] P15
+  - [x] P16
+  - [x] P17
+  - [x] P18
+  - [x] P19
+  - [x] P20
+  - [x] P21
+  - [x] P22
+  - [x] P23
+  - [x] P24
+  - [x] P25
+  - [ ] P26
+  - [ ] P27
+  - [ ] P28
   
 - Arithmetic (0/11):
-  - P31
-  - P32
-  - P33
-  - P34
-  - P35
-  - P36
-  - P37
-  - P38
-  - P39
-  - P40
-  - P41
+  - [ ] P31
+  - [ ] P32
+  - [ ] P33
+  - [ ] P34
+  - [ ] P35
+  - [ ] P36
+  - [ ] P37
+  - [ ] P38
+  - [ ] P39
+  - [ ] P40
+  - [ ] P41
   
 - Logic and Codes (0/5):
-  - P46
-  - P47
-  - P48
-  - P49
-  - P50
+  - [ ] P46
+  - [ ] P47
+  - [ ] P48
+  - [ ] P49
+  - [ ] P50
   
 - Binary Trees (0/18):
-  - P54A
-  - P55
-  - P56
-  - P57
-  - P58
-  - P59
-  - P60
-  - P61
-  - P61A
-  - P62
-  - P62B
-  - P63
-  - P64
-  - P65
-  - P66
-  - P67
-  - P68
-  - P69
+  - [ ] P54A
+  - [ ] P55
+  - [ ] P56
+  - [ ] P57
+  - [ ] P58
+  - [ ] P59
+  - [ ] P60
+  - [ ] P61
+  - [ ] P61A
+  - [ ] P62
+  - [ ] P62B
+  - [ ] P63
+  - [ ] P64
+  - [ ] P65
+  - [ ] P66
+  - [ ] P67
+  - [ ] P68
+  - [ ] P69
   
 - Multiway Trees (0/6):
-  - P70B
-  - P70C
-  - P70
-  - P71
-  - P72
-  - P73
+  - [ ] P70B
+  - [ ] P70C
+  - [ ] P70
+  - [ ] P71
+  - [ ] P72
+  - [ ] P73
   
 - Graphs (0/10):
-  - P80
-  - P81
-  - P82
-  - P83
-  - P84
-  - P85
-  - P86
-  - P87
-  - P88
-  - P89
+  - [ ] P80
+  - [ ] P81
+  - [ ] P82
+  - [ ] P83
+  - [ ] P84
+  - [ ] P85
+  - [ ] P86
+  - [ ] P87
+  - [ ] P88
+  - [ ] P89
 
 - Miscelaneous Problems (0/10):
-  - P90
-  - P91
-  - P92
-  - P93
-  - P94
-  - P95
-  - P96
-  - P97
-  - P98
-  - P99
-
- 
-
-
-
-
-
-
-  
-	  
+  - [ ] P90
+  - [ ] P91
+  - [ ] P92
+  - [ ] P93
+  - [ ] P94
+  - [ ] P95
+  - [ ] P96
+  - [ ] P97
+  - [ ] P98
+  - [ ] P99
