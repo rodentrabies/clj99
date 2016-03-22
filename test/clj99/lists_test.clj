@@ -113,3 +113,19 @@
      (dotimes [n 10]
        (let [k (rand-int (count testval)), v (clj99.lists/rnd-select testval k)]
         (is (and (= (count v) k)) (every? (into #{} testval) v)))))))
+
+(deftest p23
+  (let [testval '(a b c d e f g h)]
+   (testing "P23"
+     (dotimes [n 10]
+       (let [k (rand-int (count testval)), v (clj99.lists/rnd-select testval k)]
+        (is (and (= (count v) k) (every? (into #{} testval) v))))))))
+
+(deftest p24
+  (let [test-m (rand-int 100)
+        test-k (rand-int test-m)]
+   (testing "P24"
+     (dotimes [n 10]
+       (let [v (clj99.lists/lotto-select test-k test-m)]
+        (is (and (= (count v) k)
+                 (every? (into #{} (clj99.lists/mrange 1 test-m)) v))))))))

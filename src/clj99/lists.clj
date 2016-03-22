@@ -265,7 +265,7 @@
      * (insert-at 'alfa '(a b c d) 2)
      (A ALFA B C D)"
   [elem lst k]
-  (cond (not (seq lst)) nil
+  (cond (not (seq lst)) (list elem)
         (= k 1) (cons elem lst)
         :else (cons (first lst) (insert-at elem (rest lst) (dec k)))))
 
@@ -289,5 +289,44 @@
    Hint: Use the built-in random number generator and the result
          of problem P20."
   [lst k]
-  (loop [l lst, n (- (count lst) k)]
-    (if (= n 0) l (recur (remove-at l (inc (rand-int (count l)))) (dec n)))))
+  (loop [l lst, n k, res nil]
+    (if (or (== n 0) (not (seq l)))
+      res
+      (let [pos (inc (rand-int (count l)))
+            elem (elem-at l pos)]
+        (recur (remove-at l pos) (dec n) (cons elem res))))))
+
+
+(defn lotto-select
+  "P24 (*) Lotto: Draw N different random numbers from the set 1..M.
+   The selected numbers shall be returned in a list.
+   Example:
+     * (lotto-select 6 49)
+     (23 1 17 33 21 37)
+   Hint: Combine the solutions of problems P22 and P23."
+  [k m]
+  (rnd-select (mrange 1 m) k))
+
+
+(defn rnd-permu
+  "P25 (*) Generate a random permutation of the elements of a list.
+   Example:
+     * (rnd-permu '(a b c d e f))
+     (B A D C E F)
+   Hint: Use the solution of problem P23."
+  [lst]
+  (rnd-select lst (count lst)))
+
+
+(defn combination
+  "P26 (**) Generate the combinations of K distinct objects chosen from
+   the N elements of a list. In how many ways can a committee of 3 be chosen
+   from a group of 12 people? We all know that there
+   are C(12,3) = 220 possibilities (C(N,K) denotes the well-known binomial
+   coefficients). For pure mathematicians, this result may be great. But we want
+   to really generate all the possibilities in a list.
+   Example:
+     * (combination 3 '(a b c d e f))
+     ((A B C) (A B D) (A B E) ... ) "
+  [n lst]
+  )
