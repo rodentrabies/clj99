@@ -329,4 +329,8 @@
      * (combination 3 '(a b c d e f))
      ((A B C) (A B D) (A B E) ... ) "
   [n lst]
-  )
+  (map-indexed
+   (fn [i e]
+     (let [other (remove-at lst (inc i))]
+       (map #(cons e %) (combination (dec n) other))))
+   lst))
