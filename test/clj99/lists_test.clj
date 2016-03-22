@@ -130,9 +130,9 @@
         (is (and (= (count v) test-k)
                  (every? (into #{} (clj99.lists/mrange 1 test-m)) v))))))))
 
-(deftest p24
+(deftest p25
   (let [test-m (mrange 1 20)]
-   (testing "P24"
+   (testing "P25"
      (dotimes [n 10]
        (let [v (clj99.lists/rnd-permu test-m)]
         (is (and (= (count v) 20) (every? (into #{} test-m) v))))))))
