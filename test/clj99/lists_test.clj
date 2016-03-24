@@ -136,3 +136,11 @@
      (dotimes [n 10]
        (let [v (clj99.lists/rnd-permu test-m)]
         (is (and (= (count v) 20) (every? (into #{} test-m) v))))))))
+
+(deftest p26
+  (let [test-m (mrange 1 20)]
+   (testing "P26"
+     (is (= (clj99.lists/combination 3 '(a b c d e f))
+            '((a b c) (a b d) (a b e) (a b f) (a c d) (a c e) (a c f)
+              (a d e) (a d f) (a e f) (b c d) (b c e) (b c f) (b d e)
+              (b d f) (b e f) (c d e) (c d f) (c e f) (d e f)))))))

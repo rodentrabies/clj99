@@ -4,7 +4,7 @@ Famous **LISP-99** problem set in **clojure** just to see how fast can I go.
 See original problems [here](http://www.ic.unicamp.br/~meidanis/courses/mc336/2006s2/funcional/L-99_Ninety-Nine_Lisp_Problems.html).
 
 List of completed problems:
-- Lists (25/28):
+- Lists (26/28):
   - [x] P01
   - [x] P02
   - [x] P03
@@ -30,7 +30,7 @@ List of completed problems:
   - [x] P23
   - [x] P24
   - [x] P25
-  - [ ] P26
+  - [x] P26
   - [ ] P27
   - [ ] P28
   
