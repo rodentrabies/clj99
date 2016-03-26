@@ -31,7 +31,7 @@ List of completed problems:
   - [x] P24
   - [x] P25
   - [x] P26
-  - [ ] P27
+  - [x] P27
   - [ ] P28
   
 - Arithmetic (0/11):
