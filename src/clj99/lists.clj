@@ -1,5 +1,6 @@
 (ns clj99.lists
-  "Problems from 1 through 28. Working with lists.")
+  "Problems from 1 through 28. Working with lists."
+  (:require [clojure.set :as set]))
 
 
 (defn mlast
@@ -365,7 +366,36 @@
      (let [combs (combination (first gs) v)]
        (mapcat
         #(map (fn [x] (cons % x))
-              (all-groups (sort (seq (clojure.set/difference (set v) %)))
+              (all-groups (sort (seq (set/difference (set v) %)))
                           (rest gs)))
         combs))
      (list (list v)))))
+
+
+(defn lsort
+  "P28A (*) Sorting a list of lists according to length of sublists
+   We suppose that a list contains elements that are lists themselves.
+   The objective is to sort the elements of this list according to their length.
+   E.g. short lists first, longer lists later, or vice versa.
+   Example:
+     * (lsort '((a b c) (d e) (f g h) (d e) (i j k l) (m n) (o)))
+     ((O) (D E) (D E) (M N) (A B C) (F G H) (I J K L))"
+  [lst]
+  (sort #(compare (count %1) (count %2)) lst))
+
+
+(defn lfsort
+  "P28B (**) Again, we suppose that a list contains elements that are lists
+   themselves. But this time the objective is to sort the elements of this
+   list according to their length frequency; i.e., in the default, where
+   sorting is done ascendingly, lists with rare lengths are placed first,
+   others with a more frequent length come later.
+   Example:
+     * (lfsort '((a b c) (d e) (f g h) (d e) (i j k l) (m n) (o)))
+     ((i j k l) (o) (a b c) (f g h) (d e) (d e) (m n))
+   Note that in the above example, the first two lists in the result have length
+   4 and 1, both lengths appear just once. The third and forth list have length 3
+   which appears twice (there are two list of this length). And finally, the last
+   three lists have length 2. This is the most frequent length."
+  [lst]
+  (apply concat (sort-by count (map second (group-by count lst)))))

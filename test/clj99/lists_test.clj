@@ -144,3 +144,15 @@
             '((a b c) (a b d) (a b e) (a b f) (a c d) (a c e) (a c f)
               (a d e) (a d f) (a e f) (b c d) (b c e) (b c f) (b d e)
               (b d f) (b e f) (c d e) (c d f) (c e f) (d e f)))))))
+
+(deftest p28a
+  (testing "P28A"
+    (is (= (clj99.lists/lsort
+            '((a b c) (d e) (f g h) (d e) (i j k l) (m n) (o)))
+           '((o) (d e) (d e) (m n) (a b c) (f g h) (i j k l))))))
+
+(deftest p28b
+  (testing "P28B"
+    (is (= (clj99.lists/lfsort
+            '((a b c) (d e) (f g h) (d e) (i j k l) (m n) (o)))
+           '((i j k l) (o) (a b c) (f g h) (d e) (d e) (m n))))))
