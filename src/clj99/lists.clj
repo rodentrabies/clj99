@@ -1,5 +1,5 @@
 (ns clj99.lists
-  "Problems from 1 through 28. Working with lists."
+  "Problems from 1 through 29. Working with lists."
   (:require [clojure.set :as set]))
 
 

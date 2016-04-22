@@ -35,10 +35,10 @@ List of completed problems:
   - [x] P28A
   - [x] P28B
   
-- Arithmetic (0/11):
-  - [ ] P31
-  - [ ] P32
-  - [ ] P33
+- Arithmetic (3/11):
+  - [x] P31
+  - [x] P32
+  - [x] P33
   - [ ] P34
   - [ ] P35
   - [ ] P36
