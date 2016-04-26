@@ -19,3 +19,8 @@
   (testing "P33"
     (is (coprime? 35 64))
     (is (false? (coprime? 35 65)))))
+
+(deftest p34
+  (testing "P34"
+    (is (= (totient-phi 10) 4))
+    (is (= (totient-phi 99) 60))))
