@@ -31,8 +31,8 @@
 
 
 (defn gcd
-  "P32 (**) Determine the greatest common divisor of two positive integer numbers.
-   Use Euclid's algorithm.
+  "P32 (**) Determine the greatest common divisor of two positive integer
+   numbers. Use Euclid's algorithm.
    Example:
      * (gcd 36 63)
      9"
@@ -80,4 +80,25 @@
      * (prime-factors 315)
      (3 3 5 7)"
   [n]
-  )
+  (loop [num n, fac 2, res []]
+    (cond (== num 0) res
+          (> (* fac fac) num) (conj res num)
+          (== (rem num fac) 0) (recur (quot num fac) fac (conj res fac))
+          :else (recur num (inc fac) res))))
+
+
+;; (defn prime-factors-mult
+;;   "P36 (**) Determine the prime factors of a given positive integer (2).
+;;    Construct a list containing the prime factors and their multiplicity.
+;;    Example:
+;;      * (prime-factors-mult 315)
+;;      ((3 2) (5 1) (7 1))
+;;    Hint: The problem is similar to problem P13."
+;;   [n]
+;;   (loop [num n, fac 2, set 0, res []]
+;;     (print num)
+;;     (cond (== num 0) (if (== set 0) res (conj res [fac set]))
+;;           (> (* fac fac) num) (conj res [num 1])
+;;           (== (rem num fac) 0) (recur (quot num fac) fac (inc set) res)
+;;           :else (recur
+;;                  num (inc fac) 0 (if (== set 0) res (conj res [fac set]))))))

@@ -24,3 +24,11 @@
   (testing "P34"
     (is (= (totient-phi 10) 4))
     (is (= (totient-phi 99) 60))))
+
+(deftest p35
+  (testing "P35"
+    (dotimes [i 10]
+      ;; bigints need special libs, so ints only
+      (let [n (rand-int Integer/MAX_VALUE)
+            pfs (prime-factors n)]
+        (is (== n (reduce * pfs)))))))
