@@ -1,6 +1,7 @@
 (ns clj99.arithmetic-test
   (:require [clj99.arithmetic :refer :all]
-            [clojure.test :refer :all]))
+            [clojure.test :refer :all]
+            [clojure.math.numeric-tower :as m]))
 
 (deftest p31
   (testing "P31"
@@ -32,3 +33,10 @@
       (let [n (rand-int Integer/MAX_VALUE)
             pfs (prime-factors n)]
         (is (== n (reduce * pfs)))))))
+
+(deftest p36
+  (testing "P36"
+    (dotimes [i 10]
+      (let [n (rand-int Integer/MAX_VALUE)
+            pfs (prime-factors-mult n)]
+        (is (== n (reduce #(* %1 (m/expt (%2 0) (%2 1))) 1 pfs)))))))
